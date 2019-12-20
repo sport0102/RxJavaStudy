@@ -1,6 +1,8 @@
 package com.study.myapplication.ui
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import com.study.myapplication.BR
 import com.study.myapplication.R
@@ -27,7 +29,14 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
                 object : SimpleRecyclerView.Adapter<MovieResponse.Item, ItemMovieInfoBinding>(
                     layoutRes = R.layout.item_movie_info,
                     bindingVariableId = BR.item,
-                    onClicked = { item, view, position -> }
+                    onClicked = { item, view, position ->
+                        startActivity(
+                            Intent(
+                                Intent.ACTION_VIEW,
+                                Uri.parse((item as MovieResponse.Item).link)
+                            )
+                        )
+                    }
                 ) {}
             mainBtnSearch.setOnClickListener {
                 viewModel.searchKeyword.value?.let {
