@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
 
     override val viewModel by viewModel<MainViewModel>()
-    private var mPublishSubject: PublishSubject<String> = PublishSubject.create()
+    private var publishSubject: PublishSubject<String> = PublishSubject.create()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +40,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
                 ) {}
             mainBtnSearch.setOnClickListener {
                 viewModel.searchKeyword.value?.let {
-                    mPublishSubject.onNext(it)
+                    publishSubject.onNext(it)
                 }
             }
         }
@@ -48,7 +48,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
 
     @SuppressLint("CheckResult")
     private fun searchEvent() {
-        mPublishSubject
+        publishSubject
             .observeOn(AndroidSchedulers.mainThread())
             .debounce(500L,TimeUnit.MILLISECONDS)
             .subscribe {
