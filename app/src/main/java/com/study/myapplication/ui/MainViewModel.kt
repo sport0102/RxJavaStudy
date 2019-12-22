@@ -25,10 +25,9 @@ class MainViewModel(private val naverRepository: NaverRepository) : BaseViewMode
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
-                        _isDataLoadingError.value = Event(true)
-//                        _isDataLoadingError.value = Event(false)
-//                        _movieList.postValue(it.items)
-//                        clearKeyword()
+                        _isDataLoadingError.value = Event(false)
+                        _movieList.postValue(it.items)
+                        clearKeyword()
                     }, {
                         _isDataLoadingError.value = Event(true)
                     })
