@@ -4,6 +4,7 @@
     xmlns:bind="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="item"
             type="com.study.myapplication.api.model.MovieResponse.Item" />
@@ -16,14 +17,21 @@
         android:background="?android:attr/selectableItemBackground"
         android:padding="16dp">
 
-        <ImageView
-            android:id="@+id/item_movie_info_image_thumbnail"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/item_movie_info_card_thumbnail"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:adjustViewBounds="true"
-            bind:imageUrl="@{item.image}" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/item_movie_info_image_thumbnail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                bind:imageUrl="@{item.image}" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/item_movie_info_text_title"
@@ -32,11 +40,11 @@
             android:layout_marginStart="16dp"
             android:ellipsize="end"
             android:singleLine="true"
-            bind:html="@{item.title}"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/item_movie_info_image_thumbnail"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/item_movie_info_card_thumbnail"
+            app:layout_constraintTop_toTopOf="parent"
+            bind:html="@{item.title}" />
 
         <TextView
             android:id="@+id/item_movie_info_text_rating"
@@ -48,7 +56,7 @@
             android:singleLine="true"
             android:text="@{item.userRating}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/item_movie_info_image_thumbnail"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_info_card_thumbnail"
             app:layout_constraintTop_toBottomOf="@+id/item_movie_info_text_title" />
 
         <TextView
@@ -61,7 +69,7 @@
             android:singleLine="true"
             android:text="@{item.pubDate}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/item_movie_info_image_thumbnail"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_info_card_thumbnail"
             app:layout_constraintTop_toBottomOf="@+id/item_movie_info_text_rating" />
 
         <TextView
@@ -74,7 +82,7 @@
             android:singleLine="true"
             android:text="@{item.director}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/item_movie_info_image_thumbnail"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_info_card_thumbnail"
             app:layout_constraintTop_toBottomOf="@+id/item_movie_info_text_publish_date" />
 
         <TextView
@@ -85,7 +93,7 @@
             android:layout_marginTop="8dp"
             android:text="@{item.actor}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/item_movie_info_image_thumbnail"
+            app:layout_constraintStart_toEndOf="@+id/item_movie_info_card_thumbnail"
             app:layout_constraintTop_toBottomOf="@+id/item_movie_info_text_director" />
 
 
