@@ -1,6 +1,5 @@
 package com.study.myapplication.ui
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -24,7 +23,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        searchEvent()
+        addSearchEvent()
         binding {
             mainRv.adapter =
                 object : SimpleRecyclerView.Adapter<MovieResponse.Item, ItemMovieInfoBinding>(
@@ -48,22 +47,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
         }
         // 데이터 로딩 에러 처리
         viewModel.isDataLoadingError.observe(this, Observer {
-            it.getContentIfNotHandled()?.let {isError->
-                if(isError){
-                   toastM(getString(R.string.main_toast_error_network))
+            it.getContentIfNotHandled()?.let { isError ->
+                if (isError) {
+                    toastM(getString(R.string.main_toast_error_network))
                 }
             }
         })
     }
 
-    @SuppressLint("CheckResult")
-    private fun searchEvent() {
-        publishSubject
+    private fun addSearchEvent() {
+        addDisposable(publishSubject
             .observeOn(AndroidSchedulers.mainThread())
-            .debounce(500L,TimeUnit.MILLISECONDS)
+            .debounce(500L, TimeUnit.MILLISECONDS)
             .subscribe {
                 viewModel.getMovieList(it)
-            }
+            })
     }
 
 }
