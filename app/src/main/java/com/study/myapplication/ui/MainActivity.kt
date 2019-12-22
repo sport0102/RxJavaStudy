@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import com.study.myapplication.BR
 import com.study.myapplication.R
 import com.study.myapplication.api.model.MovieResponse
@@ -38,12 +39,21 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
                         )
                     }
                 ) {}
+            // 검색 버튼 처리
             mainBtnSearch.setOnClickListener {
                 viewModel.searchKeyword.value?.let {
                     publishSubject.onNext(it)
                 }
             }
         }
+        // 데이터 로딩 에러 처리
+        viewModel.isDataLoadingError.observe(this, Observer {
+            it.getContentIfNotHandled()?.let {isError->
+                if(isError){
+                   toastM(getString(R.string.main_toast_error_network))
+                }
+            }
+        })
     }
 
     @SuppressLint("CheckResult")

@@ -7,8 +7,6 @@ import com.study.myapplication.base.BaseViewModel
 import com.study.myapplication.source.NaverRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import io.reactivex.subjects.BehaviorSubject
-import javax.security.auth.Subject
 
 class MainViewModel(private val naverRepository: NaverRepository) : BaseViewModel() {
 
@@ -20,17 +18,19 @@ class MainViewModel(private val naverRepository: NaverRepository) : BaseViewMode
         searchKeyword.value = ""
     }
 
-    fun getMovieList(query : String) {
+    fun getMovieList(query: String) {
         naverRepository.getMovieList(query)?.let { single ->
             addDisposable(
                 single
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
-                        _movieList.postValue(it.items)
-                        clearKeyword()
+                        _isDataLoadingError.value = Event(true)
+//                        _isDataLoadingError.value = Event(false)
+//                        _movieList.postValue(it.items)
+//                        clearKeyword()
                     }, {
-
+                        _isDataLoadingError.value = Event(true)
                     })
             )
         }

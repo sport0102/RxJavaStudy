@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">My Application</string>
     <string name="main_search">검색</string>
+    <string name="main_toast_error_network">데이터를 가져올 수 없습니다</string>
 </resources>
