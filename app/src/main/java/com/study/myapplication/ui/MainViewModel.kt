@@ -14,10 +14,6 @@ class MainViewModel(private val naverRepository: NaverRepository) : BaseViewMode
     val movieList: LiveData<List<MovieResponse.Item>> get() = _movieList
     val searchKeyword = MutableLiveData<String>()
 
-    private fun clearKeyword() {
-        searchKeyword.value = ""
-    }
-
     fun getMovieList(query: String) {
         naverRepository.getMovieList(query)?.let { single ->
             addDisposable(
@@ -27,7 +23,6 @@ class MainViewModel(private val naverRepository: NaverRepository) : BaseViewMode
                     .subscribe({
                         _isDataLoadingError.value = Event(false)
                         _movieList.postValue(it.items)
-                        clearKeyword()
                     }, {
                         _isDataLoadingError.value = Event(true)
                     })
