@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.study.myapplication.feature.CompareCoinInfoVo" />
+            type="com.study.myapplication.feature.compare.CompareCoinInfoVo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,8 @@
             android:id="@+id/item_coin_info_cl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/margin_l"
+            android:paddingTop="@dimen/margin_l"
+            android:paddingBottom="@dimen/margin_l"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
