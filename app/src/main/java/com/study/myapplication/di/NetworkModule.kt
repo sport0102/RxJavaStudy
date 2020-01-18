@@ -1,12 +1,13 @@
 package com.study.myapplication.di
 
+import com.study.myapplication.api.BithumbApi
+import com.aiden.aiden.architecturepatternstudy.api.UpbitApi
 import com.study.myapplication.BuildConfig
-import com.study.myapplication.api.NaverApiKeyStore
-import com.study.myapplication.api.NaverApi
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.qualifier.named
 import org.koin.dsl.module
 import retrofit2.CallAdapter
 import retrofit2.Converter
@@ -14,21 +15,9 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-fun getNetworkModule(baseUrl: String) = module {
+fun getNetworkModule(naverUrl: String, upbitUrl: String, bithumbUrl: String) = module {
     single {
         OkHttpClient.Builder()
-            .addInterceptor(object : Interceptor{
-                override fun intercept(chain: Interceptor.Chain): Response {
-                    val original = chain.request()
-                    val request = original.newBuilder()
-                        .header("X-Naver-Client-Id", NaverApiKeyStore.naverApiClientId)
-                        .header("X-Naver-Client-Secret", NaverApiKeyStore.naverApiClientSecret)
-                        .method(original.method, original.body)
-                        .build()
-                    return chain.proceed(request)
-                }
-
-            })
             .addInterceptor(HttpLoggingInterceptor().apply {
                 level = if (BuildConfig.DEBUG) {
                     HttpLoggingInterceptor.Level.BODY
@@ -45,14 +34,24 @@ fun getNetworkModule(baseUrl: String) = module {
 
     single { RxJava2CallAdapterFactory.create() as CallAdapter.Factory }
 
-    single {
+    single(named("upbitApi")) {
         Retrofit.Builder()
             .client(get())
             .addConverterFactory(get())
             .addCallAdapterFactory(get())
-            .baseUrl(baseUrl)
+            .baseUrl(upbitUrl)
             .build()
-            .create(NaverApi::class.java)
+            .create(UpbitApi::class.java)
+    }
+
+    single(named("bithumbApi")) {
+        Retrofit.Builder()
+            .client(get())
+            .addConverterFactory(get())
+            .addCallAdapterFactory(get())
+            .baseUrl(bithumbUrl)
+            .build()
+            .create(BithumbApi::class.java)
     }
 
 }
