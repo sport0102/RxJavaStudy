@@ -1,5 +1,10 @@
 <resources>
-    <string name="app_name">My Application</string>
-    <string name="main_search">검색</string>
-    <string name="main_toast_error_network">데이터를 가져올 수 없습니다</string>
+    <string name="app_name">코인추천</string>
+
+    <string name="compare_coin_market_name">코인마켓</string>
+    <string name="compare_coin_coin_name">코인이름</string>
+    <string name="compare_coin_price_upbit">Upbit\n가격</string>
+    <string name="compare_coin_price_bithumb">Bithumb\n가격</string>
+    <string name="compare_coin_recommend_market">추천거래소</string>
+    <string name="compare_coin_differ_ratio">가격차이</string>
 </resources>
