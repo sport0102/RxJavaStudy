@@ -1,4 +1,4 @@
-package com.study.myapplication.feature
+package com.study.myapplication.feature.compare
 
 import com.study.myapplication.utils.StringUtil
 
