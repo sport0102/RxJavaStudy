@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_coin_info_cl"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/item_coin_info_text_header_market"
+            style="@style/ListTextViewHeaderTheme"
+            android:text="@string/compare_coin_market_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_header_coin_name"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_coin_info_text_header_coin_name"
+            style="@style/ListTextViewHeaderTheme"
+            android:text="@string/compare_coin_coin_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_header_upbit_price"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_header_market"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_coin_info_text_header_upbit_price"
+            style="@style/ListTextViewHeaderTheme"
+            android:text="@string/compare_coin_price_upbit"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_header_bithumb_price"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_header_coin_name"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_coin_info_text_header_bithumb_price"
+            style="@style/ListTextViewHeaderTheme"
+            android:text="@string/compare_coin_price_bithumb"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_header_recommend_market"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_header_upbit_price"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_coin_info_text_header_recommend_market"
+            style="@style/ListTextViewHeaderTheme"
+            android:text="@string/compare_coin_recommend_market"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_header_differ_price"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_header_bithumb_price"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_coin_info_text_header_differ_price"
+            style="@style/ListTextViewHeaderTheme"
+            android:text="@string/compare_coin_differ_ratio"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_header_recommend_market"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
