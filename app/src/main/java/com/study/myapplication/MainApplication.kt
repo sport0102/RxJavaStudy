@@ -14,9 +14,9 @@ class MainApplication : Application() {
         setupKoin(
             this,
             getNetworkModule(
-                "https://openapi.naver.com/",
                 "https://api.upbit.com",
-                "https://api.bithumb.com"
+                "https://api.bithumb.com",
+                "https://api.coinone.co.kr"
             ),
             getAppModule(),
             getRepositoryModule(),

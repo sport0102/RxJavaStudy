@@ -9,6 +9,7 @@ fun getAppModule() = module {
         CompareCoinViewModel(
             get(),
             get(),
+            get(),
             get()
         )
     }

@@ -27,34 +27,4 @@ data class BithumbTicker(
     val unitsTraded: String?,
     @SerializedName("units_traded_24H")
     val unitsTraded24H: String?
-) {
-    fun toBithumbTicker(
-        accTradeValue: String?,
-        accTradeValue24H: String,
-        closingPrice: String?,
-        date: String?,
-        fluctate24H: String?,
-        fluctateRate24H: String?,
-        maxPrice: String?,
-        minPrice: String?,
-        openingPrice: String?,
-        prevClosingPrice: String?,
-        unitsTraded: String?,
-        unitsTraded24H: String?
-    ): BithumbTicker {
-        return BithumbTicker(
-            accTradeValue,
-            accTradeValue24H,
-            closingPrice,
-            date,
-            fluctate24H,
-            fluctateRate24H,
-            maxPrice,
-            minPrice,
-            openingPrice,
-            prevClosingPrice,
-            unitsTraded,
-            unitsTraded24H
-        )
-    }
-}
+)

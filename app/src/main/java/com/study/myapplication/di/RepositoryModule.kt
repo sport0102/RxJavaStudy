@@ -10,10 +10,14 @@ import org.koin.dsl.module
 fun getRepositoryModule() = module {
 
     single<CoinDataSource> {
-        CoinRemoteDataSource(get(named("upbitApi")), get(named("bithumbApi")))
+        CoinRemoteDataSource(
+            get(named("upbitApi")),
+            get(named("bithumbApi")),
+            get(named("coinOneApi"))
+        )
     }
 
-    single<CoinRepository>{
+    single<CoinRepository> {
         DefaultCoinRepository(get())
     }
 }

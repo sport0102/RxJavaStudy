@@ -16,8 +16,9 @@
 
 package com.study.myapplication.source
 
-import com.study.myapplication.api.model.BithumbTickerResponse
 import com.aiden.aiden.architecturepatternstudy.api.model.UpbitTickerResponse
+import com.study.myapplication.api.model.BithumbTickerResponse
+import com.study.myapplication.api.model.CoinOneTickerResponse
 import com.study.myapplication.api.model.UpbitMarketResponse
 import io.reactivex.Single
 
@@ -28,5 +29,7 @@ interface CoinRepository {
     fun getUpbitCoin(markets: String): Single<List<UpbitTickerResponse>>
 
     fun getBithumbCoin(): Single<BithumbTickerResponse>
+
+    fun getCoinOneCoin(): Single<CoinOneTickerResponse>
 
 }

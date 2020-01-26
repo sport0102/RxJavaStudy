@@ -15,24 +15,30 @@
  */
 package com.study.myapplication.source.remote
 
-import com.study.myapplication.api.BithumbApi
 import com.aiden.aiden.architecturepatternstudy.api.UpbitApi
-import com.study.myapplication.api.model.BithumbTickerResponse
 import com.aiden.aiden.architecturepatternstudy.api.model.UpbitTickerResponse
+import com.study.myapplication.api.BithumbApi
+import com.study.myapplication.api.CoinOneApi
+import com.study.myapplication.api.model.BithumbTickerResponse
+import com.study.myapplication.api.model.CoinOneTickerResponse
 import com.study.myapplication.api.model.UpbitMarketResponse
 import com.study.myapplication.source.CoinDataSource
 import io.reactivex.Single
 
 class CoinRemoteDataSource(
     private val upbitApi: UpbitApi,
-    private val biThumbApiApi: BithumbApi
+    private val biThumbApiApi: BithumbApi,
+    private val coinOneApi: CoinOneApi
 ) : CoinDataSource {
 
     override fun getUpbitMarket(): Single<List<UpbitMarketResponse>> = upbitApi.getMarketList()
 
-    override fun getUpbitCoin(markets : String): Single<List<UpbitTickerResponse>> = upbitApi.getTickerInfo(markets)
+    override fun getUpbitCoin(markets: String): Single<List<UpbitTickerResponse>> =
+        upbitApi.getTickerInfo(markets)
 
     override fun getBithumbCoin(): Single<BithumbTickerResponse> = biThumbApiApi.getTickerInfo()
+
+    override fun getCoinOneCoin(): Single<CoinOneTickerResponse> = coinOneApi.getTickerInfo()
 
 }
 
