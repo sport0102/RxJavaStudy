@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">코인추천</string>
-
-    <string name="compare_coin_market_name">코인마켓</string>
     <string name="compare_coin_coin_name">코인이름</string>
+    <string name="compare_coin_price_coinone">Coinone\n가격(원)</string>
     <string name="compare_coin_price_upbit">Upbit\n가격(원)</string>
     <string name="compare_coin_price_bithumb">Bithumb\n가격(원)</string>
     <string name="compare_coin_recommend_market">추천\n거래소</string>
