@@ -15,11 +15,10 @@ class CompareCoinActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding {
-            coinRv.adapter =
-                CompareCoinAdapter()
+            compareCoinRv.adapter = CompareCoinAdapter()
         }
         viewModel.coinList.observe(this, Observer {
-            (binding.coinRv.adapter as CompareCoinAdapter).setCoinList(it)
+            (binding.compareCoinRv.adapter as CompareCoinAdapter).setCoinList(it)
         })
     }
 

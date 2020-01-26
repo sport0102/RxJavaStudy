@@ -6,7 +6,7 @@
 
         <variable
             name="item"
-            type="com.study.myapplication.feature.compare.CompareCoinInfoVo" />
+            type="com.study.myapplication.feature.compare.CompareCoinInfo" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,24 +26,24 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/item_coin_info_text_market"
+                android:id="@+id/item_coin_info_text_coin_name"
                 style="@style/ListTextViewThemeRegular"
-                android:text="@{item.market}"
+                android:text="@{item.coinName}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_coin_name"
+                app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_coinone_price"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/item_coin_info_text_coin_name"
+                android:id="@+id/item_coin_info_text_coinone_price"
                 style="@style/ListTextViewThemeRegular"
                 android:layout_marginStart="@dimen/margin_s"
-                android:text="@{item.coinName}"
+                android:text="@{item.coinonePrice}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_upbit_price"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_market"
+                app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_coin_name"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -54,7 +54,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/item_coin_info_text_bithumb_price"
                 app:layout_constraintHorizontal_chainStyle="spread_inside"
-                app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_coin_name"
+                app:layout_constraintStart_toEndOf="@+id/item_coin_info_text_coinone_price"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
