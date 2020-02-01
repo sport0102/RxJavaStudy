@@ -1,4 +1,4 @@
-package com.aiden.aiden.architecturepatternstudy.api.model
+package com.study.myapplication.api.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

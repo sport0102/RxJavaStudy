@@ -1,9 +1,8 @@
 package com.study.myapplication.feature.compare
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.aiden.aiden.architecturepatternstudy.api.model.UpbitTickerResponse
+import androidx.lifecycle.viewModelScope
 import com.google.gson.Gson
 import com.google.gson.JsonElement
 import com.google.gson.JsonParser
@@ -14,9 +13,9 @@ import com.study.myapplication.domain.GetCoinOneCoinUseCase
 import com.study.myapplication.domain.GetUpbitCoinListUseCase
 import com.study.myapplication.domain.GetUpbitMarketUseCase
 import com.study.myapplication.utils.StringUtil
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.rxkotlin.zipWith
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.math.max
@@ -29,6 +28,28 @@ class CompareCoinViewModel(
     private val getBithumbCoinUseCase: GetBithumbCoinUseCase,
     private val getCoinOneCoinUseCase: GetCoinOneCoinUseCase
 ) : BaseViewModel() {
+
+    private val upbitTickerList by lazy {
+        viewModelScope.async(ioDispatchers) {
+            val upbitMarketStr = getMarketString(getUpbitMarketUseCase())
+            getUpbitCoinListUseCase(upbitMarketStr)
+        }
+    }
+
+    private val bithumbCoinMap by lazy {
+        viewModelScope.async(ioDispatchers) {
+            (getBithumbCoinUseCase().data as MutableMap).apply {
+                remove("data")
+            }
+        }
+    }
+
+    private val coinOneTickerResponse by lazy {
+        viewModelScope.async(ioDispatchers) {
+            getCoinOneCoinUseCase()
+        }
+    }
+
     private val _coinList = MutableLiveData<List<CompareCoinInfo>>()
     val coinList: LiveData<List<CompareCoinInfo>> get() = _coinList
 
@@ -37,41 +58,16 @@ class CompareCoinViewModel(
     }
 
     private fun getCoinList() {
-        addDisposable(
-            getUpbitMarketUseCase()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .map {
-                    getMarketString(it)
-                }
-                .flatMap {
-                    getUpbitCoinListUseCase(it)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                }
-                .zipWith(
-                    getBithumbCoinUseCase()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                ) { upbitCoin: List<UpbitTickerResponse>, bithumbCoin: BithumbTickerResponse ->
-                    val bithumbCoinMap = (bithumbCoin.data as MutableMap).apply {
-                        remove("date")
-                    }
-                    getInitCoinCompareList(upbitCoin, bithumbCoinMap)
-                }.zipWith(
-                    getCoinOneCoinUseCase()
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                ) { compareCoinInfoList: MutableList<CompareCoinInfo>, coinOneTickerResponse: CoinOneTickerResponse ->
-                    getFinalCoinCompareList(compareCoinInfoList, coinOneTickerResponse)
-                }
-                .subscribe({
-                    _coinList.value = it
-                }, {
-                    Log.d("errorerror", it.message)
-                })
+        viewModelScope.launch(ioDispatchers) {
+            val compareCoinInfoList = getInitCoinCompareList(upbitTickerList.await(), bithumbCoinMap.await())
+            withContext(uiDispatchers) {
+                _coinList.value = getFinalCoinCompareList(
+                    compareCoinInfoList,
+                    coinOneTickerResponse.await()
+                )
+            }
+        }
 
-        )
     }
 
     private fun getMarketString(upbitMarketList: List<UpbitMarketResponse>): String {

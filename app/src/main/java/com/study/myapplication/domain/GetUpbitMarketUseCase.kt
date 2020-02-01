@@ -2,10 +2,9 @@ package com.study.myapplication.domain
 
 import com.study.myapplication.api.model.UpbitMarketResponse
 import com.study.myapplication.source.CoinRepository
-import io.reactivex.Single
 
 class GetUpbitMarketUseCase(private val repository: CoinRepository) {
-    operator fun invoke(): Single<List<UpbitMarketResponse>> {
+    suspend operator fun invoke(): List<UpbitMarketResponse> {
         return repository.getUpbitMarket()
     }
 

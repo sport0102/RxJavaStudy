@@ -15,23 +15,22 @@
  */
 package com.study.myapplication.source
 
-import com.aiden.aiden.architecturepatternstudy.api.model.UpbitTickerResponse
 import com.study.myapplication.api.model.BithumbTickerResponse
 import com.study.myapplication.api.model.CoinOneTickerResponse
 import com.study.myapplication.api.model.UpbitMarketResponse
-import io.reactivex.Single
+import com.study.myapplication.api.model.UpbitTickerResponse
 
 class DefaultCoinRepository(
     private val remoteDataSource: CoinDataSource
 ) : CoinRepository {
-    override fun getUpbitMarket(): Single<List<UpbitMarketResponse>> =
+    override suspend fun getUpbitMarket(): List<UpbitMarketResponse> =
         remoteDataSource.getUpbitMarket()
 
-    override fun getUpbitCoin(markets: String): Single<List<UpbitTickerResponse>> =
+    override suspend fun getUpbitCoin(markets: String): List<UpbitTickerResponse> =
         remoteDataSource.getUpbitCoin(markets)
 
-    override fun getBithumbCoin(): Single<BithumbTickerResponse> = remoteDataSource.getBithumbCoin()
+    override suspend fun getBithumbCoin(): BithumbTickerResponse = remoteDataSource.getBithumbCoin()
 
-    override fun getCoinOneCoin(): Single<CoinOneTickerResponse> = remoteDataSource.getCoinOneCoin()
+    override suspend fun getCoinOneCoin(): CoinOneTickerResponse = remoteDataSource.getCoinOneCoin()
 
 }

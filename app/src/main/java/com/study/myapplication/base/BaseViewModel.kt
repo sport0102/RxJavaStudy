@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.study.myapplication.Event
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.Dispatchers
 
 abstract class BaseViewModel : ViewModel() {
 
@@ -23,19 +23,11 @@ abstract class BaseViewModel : ViewModel() {
     )
     val isDataLoadingError: LiveData<Event<Boolean>> get() = _isDataLoadingError
 
-    private val compositeDisposable = CompositeDisposable()
-
-    fun addDisposable(disposable: Disposable) {
-        compositeDisposable.add(disposable)
+    protected val coroutineExceptionHanlder = CoroutineExceptionHandler { _, throwable ->
+        _isDataLoadingError.value = Event(true)
     }
 
-    fun removeDisposable(disposable: CompositeDisposable) {
-        compositeDisposable.remove(disposable)
-    }
-
-    override fun onCleared() {
-        compositeDisposable.clear()
-        super.onCleared()
-    }
+    protected val ioDispatchers = Dispatchers.IO + coroutineExceptionHanlder
+    protected val uiDispatchers = Dispatchers.Main + coroutineExceptionHanlder
 
 }

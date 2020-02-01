@@ -16,20 +16,19 @@
 
 package com.study.myapplication.source
 
-import com.aiden.aiden.architecturepatternstudy.api.model.UpbitTickerResponse
 import com.study.myapplication.api.model.BithumbTickerResponse
 import com.study.myapplication.api.model.CoinOneTickerResponse
 import com.study.myapplication.api.model.UpbitMarketResponse
-import io.reactivex.Single
+import com.study.myapplication.api.model.UpbitTickerResponse
 
 interface CoinDataSource {
 
-    fun getUpbitMarket(): Single<List<UpbitMarketResponse>>
+    suspend fun getUpbitMarket(): List<UpbitMarketResponse>
 
-    fun getUpbitCoin(markets: String): Single<List<UpbitTickerResponse>>
+    suspend fun getUpbitCoin(markets: String): List<UpbitTickerResponse>
 
-    fun getBithumbCoin(): Single<BithumbTickerResponse>
+    suspend fun getBithumbCoin(): BithumbTickerResponse
 
-    fun getCoinOneCoin(): Single<CoinOneTickerResponse>
+    suspend fun getCoinOneCoin(): CoinOneTickerResponse
 
 }
