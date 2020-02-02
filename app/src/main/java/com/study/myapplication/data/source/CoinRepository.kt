@@ -14,21 +14,19 @@
  * limitations under the License.
  */
 
-package com.study.myapplication.source
+package com.study.myapplication.data.source
 
-import com.study.myapplication.api.model.BithumbTickerResponse
-import com.study.myapplication.api.model.CoinOneTickerResponse
-import com.study.myapplication.api.model.UpbitMarketResponse
-import com.study.myapplication.api.model.UpbitTickerResponse
+import com.study.myapplication.domain.entity.Market
+import com.study.myapplication.domain.entity.Ticker
 
-interface CoinDataSource {
+interface CoinRepository {
 
-    suspend fun getUpbitMarket(): List<UpbitMarketResponse>
+    suspend fun getUpbitMarket(): List<Market>
 
-    suspend fun getUpbitCoin(markets: String): List<UpbitTickerResponse>
+    suspend fun getUpbitCoin(marketList: List<Market>): Map<String, Ticker>
 
-    suspend fun getBithumbCoin(): BithumbTickerResponse
+    suspend fun getBithumbCoin(): Map<String, Ticker>
 
-    suspend fun getCoinOneCoin(): CoinOneTickerResponse
+    suspend fun getCoinOneCoin(): Map<String, Ticker>
 
 }

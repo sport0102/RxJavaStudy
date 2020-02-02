@@ -21,9 +21,12 @@ class CompareCoinActivity :
             (binding.compareCoinRv.adapter as CompareCoinAdapter).setCoinList(it)
         })
         viewModel.isDataLoadingError.observe(this, Observer {
-            if (it.getContentIfNotHandled() == true) {
-                toastM("데이터 에러 발생")
+            it.getContentIfNotHandled()?.let {
+                if (it.second) {
+                    toastM("${it.first}")
+                }
             }
+
         })
     }
 

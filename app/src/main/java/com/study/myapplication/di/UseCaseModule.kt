@@ -1,9 +1,9 @@
 package com.study.myapplication.di
 
-import com.study.myapplication.domain.GetBithumbCoinUseCase
-import com.study.myapplication.domain.GetCoinOneCoinUseCase
-import com.study.myapplication.domain.GetUpbitCoinListUseCase
-import com.study.myapplication.domain.GetUpbitMarketUseCase
+import com.study.myapplication.domain.usecase.GetBithumbCoinUseCase
+import com.study.myapplication.domain.usecase.GetCoinOneCoinUseCase
+import com.study.myapplication.domain.usecase.GetUpbitCoinListUseCase
+import com.study.myapplication.domain.usecase.GetUpbitMarketUseCase
 import org.koin.dsl.module
 
 fun getUseCaseModule() = module {

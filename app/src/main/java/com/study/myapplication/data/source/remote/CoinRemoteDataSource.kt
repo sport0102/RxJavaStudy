@@ -1,13 +1,13 @@
-package com.study.myapplication.source.remote
+package com.study.myapplication.data.source.remote
 
 import com.study.myapplication.api.BithumbApi
 import com.study.myapplication.api.CoinOneApi
 import com.study.myapplication.api.UpbitApi
 import com.study.myapplication.api.model.BithumbTickerResponse
-import com.study.myapplication.api.model.CoinOneTickerResponse
+import com.study.myapplication.api.model.CoinOneTicker
 import com.study.myapplication.api.model.UpbitMarketResponse
 import com.study.myapplication.api.model.UpbitTickerResponse
-import com.study.myapplication.source.CoinDataSource
+import com.study.myapplication.data.source.CoinDataSource
 
 class CoinRemoteDataSource(
     private val upbitApi: UpbitApi,
@@ -22,7 +22,7 @@ class CoinRemoteDataSource(
 
     override suspend fun getBithumbCoin(): BithumbTickerResponse = biThumbApiApi.getTickerInfo()
 
-    override suspend fun getCoinOneCoin(): CoinOneTickerResponse = coinOneApi.getTickerInfo()
+    override suspend fun getCoinOneCoin(): Map<String, Any> = coinOneApi.getTickerInfo()
 
 }
 

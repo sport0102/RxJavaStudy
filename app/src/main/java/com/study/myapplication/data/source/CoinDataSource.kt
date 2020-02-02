@@ -13,24 +13,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.study.myapplication.source
+
+package com.study.myapplication.data.source
 
 import com.study.myapplication.api.model.BithumbTickerResponse
-import com.study.myapplication.api.model.CoinOneTickerResponse
+import com.study.myapplication.api.model.CoinOneTicker
 import com.study.myapplication.api.model.UpbitMarketResponse
 import com.study.myapplication.api.model.UpbitTickerResponse
 
-class DefaultCoinRepository(
-    private val remoteDataSource: CoinDataSource
-) : CoinRepository {
-    override suspend fun getUpbitMarket(): List<UpbitMarketResponse> =
-        remoteDataSource.getUpbitMarket()
+interface CoinDataSource {
 
-    override suspend fun getUpbitCoin(markets: String): List<UpbitTickerResponse> =
-        remoteDataSource.getUpbitCoin(markets)
+    suspend fun getUpbitMarket(): List<UpbitMarketResponse>
 
-    override suspend fun getBithumbCoin(): BithumbTickerResponse = remoteDataSource.getBithumbCoin()
+    suspend fun getUpbitCoin(markets: String): List<UpbitTickerResponse>
 
-    override suspend fun getCoinOneCoin(): CoinOneTickerResponse = remoteDataSource.getCoinOneCoin()
+    suspend fun getBithumbCoin(): BithumbTickerResponse
+
+    suspend fun getCoinOneCoin(): Map<String, Any>
 
 }

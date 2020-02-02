@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="vm"
             type="com.study.myapplication.feature.compare.CompareCoinViewModel" />
@@ -98,6 +100,17 @@
             app:layout_constraintTop_toBottomOf="@+id/compare_coin_layout_header"
             tools:itemCount="15"
             tools:listitem="@layout/item_compare_coin_info" />
+
+        <ProgressBar
+            android:id="@+id/compare_coin_pb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{vm.isDataLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

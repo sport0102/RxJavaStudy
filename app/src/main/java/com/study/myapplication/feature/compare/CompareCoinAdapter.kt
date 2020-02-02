@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.study.myapplication.databinding.ItemCompareCoinInfoBinding
+import com.study.myapplication.domain.entity.Ticker
+import com.study.myapplication.feature.compare.model.CompareCoinInfo
 
 class CompareCoinAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
