@@ -6,7 +6,7 @@ import com.study.myapplication.data.api.CoinOneApi
 import com.study.myapplication.data.api.UpbitApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.core.qualifier.named
+import org.koin.core.parameter.parametersOf
 import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -29,31 +29,23 @@ fun getNetworkModule(upbitUrl: String, bithumbUrl: String, coinOneUrl: String) =
         GsonConverterFactory.create() as Converter.Factory
     }
 
-    single(named("upbitApi")) {
+    factory<Retrofit> { (url: String) ->
         Retrofit.Builder()
-            .client(get())
+            .baseUrl(url)
             .addConverterFactory(get())
-            .baseUrl(upbitUrl)
             .build()
-            .create(UpbitApi::class.java)
     }
 
-    single(named("bithumbApi")) {
-        Retrofit.Builder()
-            .client(get())
-            .addConverterFactory(get())
-            .baseUrl(bithumbUrl)
-            .build()
-            .create(BithumbApi::class.java)
+    single<UpbitApi> {
+        get<Retrofit> { parametersOf(upbitUrl) }.create(UpbitApi::class.java)
     }
 
-    single(named("coinOneApi")) {
-        Retrofit.Builder()
-            .client(get())
-            .addConverterFactory(get())
-            .baseUrl(coinOneUrl)
-            .build()
-            .create(CoinOneApi::class.java)
+    single<BithumbApi> {
+        get<Retrofit> { parametersOf(bithumbUrl) }.create(BithumbApi::class.java)
+    }
+
+    single<CoinOneApi> {
+        get<Retrofit> { parametersOf(coinOneUrl) }.create(CoinOneApi::class.java)
     }
 
 }
