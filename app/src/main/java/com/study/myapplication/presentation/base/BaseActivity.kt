@@ -34,7 +34,7 @@ abstract class BaseActivity<B : ViewDataBinding, VM : ViewModel>(
         binding.run(action)
     }
 
-    fun toastM(message: String) {
+    protected fun toastM(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
 
