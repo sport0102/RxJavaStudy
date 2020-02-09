@@ -1,4 +1,4 @@
-package com.study.myapplication.feature.utils.event
+package com.study.myapplication.presentation.utils.event
 
 open class Event<T>(private val content: T) {
 

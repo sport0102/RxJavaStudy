@@ -1,4 +1,4 @@
-package com.study.myapplication.feature.utils.event
+package com.study.myapplication.presentation.utils.event
 
 import androidx.lifecycle.Observer
 

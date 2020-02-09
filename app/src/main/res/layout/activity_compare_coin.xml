@@ -9,13 +9,13 @@
 
         <variable
             name="vm"
-            type="com.study.myapplication.feature.compare.CompareCoinViewModel" />
+            type="com.study.myapplication.presentation.compare.CompareCoinViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.compare.CompareCoinActivity">
+        tools:context=".presentation.compare.CompareCoinActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/compare_coin_layout_header"

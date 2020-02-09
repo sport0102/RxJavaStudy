@@ -1,4 +1,4 @@
-package com.study.myapplication.feature.compare.model
+package com.study.myapplication.presentation.compare.model
 
 data class CompareCoinInfo(
     var coinName: String? = null,

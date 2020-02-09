@@ -1,17 +1,17 @@
-package com.study.myapplication.feature.compare
+package com.study.myapplication.presentation.compare
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.study.myapplication.feature.utils.event.Event
+import com.study.myapplication.presentation.utils.event.Event
 import com.study.myapplication.base.BaseViewModel
 import com.study.myapplication.domain.entity.Ticker
 import com.study.myapplication.domain.usecase.GetBithumbCoinUseCase
 import com.study.myapplication.domain.usecase.GetCoinOneCoinUseCase
 import com.study.myapplication.domain.usecase.GetUpbitCoinListUseCase
 import com.study.myapplication.domain.usecase.GetUpbitMarketUseCase
-import com.study.myapplication.feature.compare.model.CompareCoinInfo
+import com.study.myapplication.presentation.compare.model.CompareCoinInfo
 import com.study.myapplication.utils.StringUtil
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

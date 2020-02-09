@@ -1,11 +1,11 @@
-package com.study.myapplication.feature.compare
+package com.study.myapplication.presentation.compare
 
 import android.os.Bundle
 import androidx.lifecycle.Observer
 import com.study.myapplication.R
 import com.study.myapplication.base.BaseActivity
 import com.study.myapplication.databinding.ActivityCompareCoinBinding
-import com.study.myapplication.feature.utils.event.EventObserver
+import com.study.myapplication.presentation.utils.event.EventObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CompareCoinActivity :
