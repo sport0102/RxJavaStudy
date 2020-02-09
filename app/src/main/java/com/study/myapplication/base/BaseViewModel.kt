@@ -3,7 +3,7 @@ package com.study.myapplication.base
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.study.myapplication.Event
+import com.study.myapplication.feature.utils.event.Event
 
 abstract class BaseViewModel : ViewModel() {
 

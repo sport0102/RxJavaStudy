@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer
 import com.study.myapplication.R
 import com.study.myapplication.base.BaseActivity
 import com.study.myapplication.databinding.ActivityCompareCoinBinding
+import com.study.myapplication.feature.utils.event.EventObserver
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CompareCoinActivity :
@@ -20,13 +21,10 @@ class CompareCoinActivity :
         viewModel.coinList.observe(this, Observer {
             (binding.compareCoinRv.adapter as CompareCoinAdapter).setCoinList(it)
         })
-        viewModel.isDataLoadingError.observe(this, Observer {
-            it.getContentIfNotHandled()?.let {
-                if (it.second) {
-                    toastM("${it.first}")
-                }
+        viewModel.isDataLoadingError.observe(this, EventObserver {
+            if (it.second) {
+                toastM("${it.first}")
             }
-
         })
     }
 

@@ -4,7 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.study.myapplication.Event
+import com.study.myapplication.feature.utils.event.Event
 import com.study.myapplication.base.BaseViewModel
 import com.study.myapplication.domain.entity.Ticker
 import com.study.myapplication.domain.usecase.GetBithumbCoinUseCase
