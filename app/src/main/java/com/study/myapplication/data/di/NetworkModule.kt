@@ -1,4 +1,4 @@
-package com.study.myapplication.di
+package com.study.myapplication.data.di
 
 import com.study.myapplication.BuildConfig
 import com.study.myapplication.data.api.BithumbApi

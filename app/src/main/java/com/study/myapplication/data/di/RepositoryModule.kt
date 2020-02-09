@@ -1,4 +1,4 @@
-package com.study.myapplication.di
+package com.study.myapplication.data.di
 
 import com.study.myapplication.data.source.CoinDataSource
 import com.study.myapplication.domain.repository.CoinRepository

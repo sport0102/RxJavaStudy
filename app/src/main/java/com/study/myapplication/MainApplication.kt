@@ -1,10 +1,10 @@
 package com.study.myapplication
 
 import android.app.Application
-import com.study.myapplication.di.getAppModule
-import com.study.myapplication.di.getNetworkModule
-import com.study.myapplication.di.getRepositoryModule
-import com.study.myapplication.di.getUseCaseModule
+import com.study.myapplication.presentation.di.getAppModule
+import com.study.myapplication.data.di.getNetworkModule
+import com.study.myapplication.data.di.getRepositoryModule
+import com.study.myapplication.domain.di.getUseCaseModule
 import com.study.myapplication.ext.setupKoin
 
 class MainApplication : Application() {

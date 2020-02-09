@@ -1,4 +1,4 @@
-package com.study.myapplication.di
+package com.study.myapplication.domain.di
 
 import com.study.myapplication.domain.usecase.GetBithumbCoinUseCase
 import com.study.myapplication.domain.usecase.GetCoinOneCoinUseCase
