@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.study.myapplication.data.source
+package com.study.myapplication.domain.repository
 
 import com.study.myapplication.domain.entity.Market
 import com.study.myapplication.domain.entity.Ticker

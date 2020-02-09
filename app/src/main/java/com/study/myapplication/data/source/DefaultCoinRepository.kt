@@ -21,6 +21,7 @@ import com.study.myapplication.api.model.CoinOneTicker
 import com.study.myapplication.domain.entity.Market
 import com.study.myapplication.domain.entity.Ticker
 import com.study.myapplication.domain.enum.CoinExchangeStation
+import com.study.myapplication.domain.repository.CoinRepository
 import java.util.*
 
 class DefaultCoinRepository(
