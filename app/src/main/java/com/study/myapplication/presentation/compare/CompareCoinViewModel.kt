@@ -12,7 +12,7 @@ import com.study.myapplication.domain.usecase.GetCoinOneCoinUseCase
 import com.study.myapplication.domain.usecase.GetUpbitCoinListUseCase
 import com.study.myapplication.domain.usecase.GetUpbitMarketUseCase
 import com.study.myapplication.presentation.compare.model.CompareCoinInfo
-import com.study.myapplication.utils.StringUtil
+import com.study.myapplication.presentation.utils.StringUtil
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlin.math.max

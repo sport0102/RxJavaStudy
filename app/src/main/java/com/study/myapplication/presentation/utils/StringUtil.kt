@@ -1,4 +1,4 @@
-package com.study.myapplication.utils
+package com.study.myapplication.presentation.utils
 
 import kotlin.math.abs
 
