@@ -4,15 +4,15 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.study.myapplication.presentation.utils.event.Event
-import com.study.myapplication.presentation.base.BaseViewModel
 import com.study.myapplication.domain.entity.Ticker
 import com.study.myapplication.domain.usecase.GetBithumbCoinUseCase
 import com.study.myapplication.domain.usecase.GetCoinOneCoinUseCase
 import com.study.myapplication.domain.usecase.GetUpbitCoinListUseCase
 import com.study.myapplication.domain.usecase.GetUpbitMarketUseCase
+import com.study.myapplication.presentation.base.BaseViewModel
 import com.study.myapplication.presentation.compare.model.CompareCoinInfo
 import com.study.myapplication.presentation.utils.StringUtil
+import com.study.myapplication.presentation.utils.event.Event
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch
 import kotlin.math.max
@@ -80,13 +80,12 @@ class CompareCoinViewModel(
                 mapOf<String, Ticker>()
             }
 
-            _coinList.postValue(
-                getCompareCoinList(
-                    upbitTickerList,
-                    bithumbTickerList,
-                    coinOneTickerList
-                )
+            _coinList.value = getCompareCoinList(
+                upbitTickerList,
+                bithumbTickerList,
+                coinOneTickerList
             )
+
             _isDataLoading.value = false
         }
     }
