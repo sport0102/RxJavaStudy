@@ -1,7 +1,6 @@
-package com.study.myapplication.ext
+package com.study.myapplication
 
 import android.content.Context
-import com.study.myapplication.BuildConfig
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.context.startKoin
