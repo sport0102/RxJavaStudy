@@ -1,4 +1,4 @@
-package com.study.myapplication.base
+package com.study.myapplication.presentation.base
 
 import android.os.Bundle
 import android.widget.Toast
