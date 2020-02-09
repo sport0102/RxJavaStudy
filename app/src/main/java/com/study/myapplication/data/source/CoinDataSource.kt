@@ -16,10 +16,9 @@
 
 package com.study.myapplication.data.source
 
-import com.study.myapplication.api.model.BithumbTickerResponse
-import com.study.myapplication.api.model.CoinOneTicker
-import com.study.myapplication.api.model.UpbitMarketResponse
-import com.study.myapplication.api.model.UpbitTickerResponse
+import com.study.myapplication.data.api.model.BithumbTickerResponse
+import com.study.myapplication.data.api.model.UpbitMarketResponse
+import com.study.myapplication.data.api.model.UpbitTickerResponse
 
 interface CoinDataSource {
 

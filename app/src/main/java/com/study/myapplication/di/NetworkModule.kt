@@ -1,9 +1,9 @@
 package com.study.myapplication.di
 
 import com.study.myapplication.BuildConfig
-import com.study.myapplication.api.BithumbApi
-import com.study.myapplication.api.CoinOneApi
-import com.study.myapplication.api.UpbitApi
+import com.study.myapplication.data.api.BithumbApi
+import com.study.myapplication.data.api.CoinOneApi
+import com.study.myapplication.data.api.UpbitApi
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.core.qualifier.named

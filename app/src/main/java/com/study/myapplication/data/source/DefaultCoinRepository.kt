@@ -16,8 +16,8 @@
 package com.study.myapplication.data.source
 
 import com.google.gson.Gson
-import com.study.myapplication.api.model.BithumbTicker
-import com.study.myapplication.api.model.CoinOneTicker
+import com.study.myapplication.data.api.model.BithumbTicker
+import com.study.myapplication.data.api.model.CoinOneTicker
 import com.study.myapplication.domain.entity.Market
 import com.study.myapplication.domain.entity.Ticker
 import com.study.myapplication.domain.enum.CoinExchangeStation

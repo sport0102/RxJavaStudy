@@ -1,4 +1,4 @@
-package com.study.myapplication.api
+package com.study.myapplication.data.api
 
 import retrofit2.http.GET
 import retrofit2.http.Query

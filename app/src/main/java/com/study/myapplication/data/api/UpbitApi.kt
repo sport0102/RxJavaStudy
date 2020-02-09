@@ -1,7 +1,7 @@
-package com.study.myapplication.api
+package com.study.myapplication.data.api
 
-import com.study.myapplication.api.model.UpbitMarketResponse
-import com.study.myapplication.api.model.UpbitTickerResponse
+import com.study.myapplication.data.api.model.UpbitMarketResponse
+import com.study.myapplication.data.api.model.UpbitTickerResponse
 import retrofit2.http.GET
 import retrofit2.http.Query
 

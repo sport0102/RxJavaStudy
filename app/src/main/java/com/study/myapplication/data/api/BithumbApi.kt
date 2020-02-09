@@ -1,6 +1,6 @@
-package com.study.myapplication.api
+package com.study.myapplication.data.api
 
-import com.study.myapplication.api.model.BithumbTickerResponse
+import com.study.myapplication.data.api.model.BithumbTickerResponse
 import retrofit2.http.GET
 
 interface BithumbApi {

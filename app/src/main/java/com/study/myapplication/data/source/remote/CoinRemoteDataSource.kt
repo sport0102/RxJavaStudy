@@ -1,12 +1,11 @@
 package com.study.myapplication.data.source.remote
 
-import com.study.myapplication.api.BithumbApi
-import com.study.myapplication.api.CoinOneApi
-import com.study.myapplication.api.UpbitApi
-import com.study.myapplication.api.model.BithumbTickerResponse
-import com.study.myapplication.api.model.CoinOneTicker
-import com.study.myapplication.api.model.UpbitMarketResponse
-import com.study.myapplication.api.model.UpbitTickerResponse
+import com.study.myapplication.data.api.BithumbApi
+import com.study.myapplication.data.api.CoinOneApi
+import com.study.myapplication.data.api.UpbitApi
+import com.study.myapplication.data.api.model.BithumbTickerResponse
+import com.study.myapplication.data.api.model.UpbitMarketResponse
+import com.study.myapplication.data.api.model.UpbitTickerResponse
 import com.study.myapplication.data.source.CoinDataSource
 
 class CoinRemoteDataSource(
